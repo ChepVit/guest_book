@@ -1,0 +1,80 @@
+[
+{
+  "model": "webapp.guest",
+  "pk": 4,
+  "fields": {
+    "author": "Vit",
+    "email": "chepelenkovitaly@gmail.com",
+    "text": "lorem",
+    "created_at": "2019-09-21T08:04:21.429Z",
+    "updated_at": "2019-09-21T08:04:21.429Z",
+    "status": "blocked"
+  }
+},
+{
+  "model": "webapp.guest",
+  "pk": 6,
+  "fields": {
+    "author": "Vitaly",
+    "email": "chepelenkovitaly@gmail.com",
+    "text": "Salam",
+    "created_at": "2019-09-21T08:05:57.354Z",
+    "updated_at": "2019-09-21T08:05:57.354Z",
+    "status": "blocked"
+  }
+},
+{
+  "model": "webapp.guest",
+  "pk": 7,
+  "fields": {
+    "author": "John",
+    "email": "Admin@admin.com",
+    "text": "I'm John",
+    "created_at": "2019-09-21T08:06:33.537Z",
+    "updated_at": "2019-09-21T08:06:33.537Z",
+    "status": "active"
+  }
+},
+{
+  "model": "webapp.guest",
+  "pk": 8,
+  "fields": {
+    "author": "John's",
+    "email": "Admin@admin.com",
+    "text": "I'm John's",
+    "created_at": "2019-09-21T08:07:09.754Z",
+    "updated_at": "2019-09-21T08:07:09.754Z",
+    "status": "active"
+  }
+},
+{
+  "model": "webapp.guest",
+  "pk": 9,
+  "fields": {
+    "author": "Bob",
+    "email": "bob@admin.com",
+    "text": "I'm Bob",
+    "created_at": "2019-09-21T08:07:54.792Z",
+    "updated_at": "2019-09-21T08:07:54.792Z",
+    "status": "active"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$btoGLVxcTk2c$VQXSWZKrwR38WFh39aRVaooX9KmJD7p/V9AbudeS1/I=",
+    "last_login": "2019-09-21T06:42:28.296Z",
+    "is_superuser": true,
+    "username": "vit",
+    "first_name": "",
+    "last_name": "",
+    "email": "chepelenkovitaly@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-09-21T06:24:30.151Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

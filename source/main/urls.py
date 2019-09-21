@@ -1,4 +1,4 @@
-"""main URL Configuration
+"""blog URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from webapp.views import guest_view
+# from webapp.views import index_view, article_view, article_create_view,\
+#     article_update_view, article_delete_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', guest_view, name='guest'),
+    path('article/<int:pk>/', guest_view, name='guest_view'),
+    # path('article/add/', article_create_view, name='article_add'),
+    # path('article/<int:pk>/edit/', article_update_view, name='article_update'),
+    # path('article/<int:pk>/delete/', article_delete_view, name='article_delete')
 ]
