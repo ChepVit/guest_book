@@ -7,33 +7,24 @@ from webapp.models import Guest
 def guest_view(request, *args, **kwargs):
     guests = Guest.objects.all()
     return render(request, 'index.html', context={
-        'guest': guests
+        'guests': guests
     })
 
-
-# def article_view(request, pk):
-#     article = get_object_or_404(Article, pk=pk)
-#
-#     return render(request, 'article.html', context={
-#         'article': article
-#     })
-#
-#
-# def article_create_view(request, *args, **kwargs):
-#     if request.method == 'GET':
-#         form = ArticleForm()
-#         return render(request, 'create.html', context={'form': form})
-#     elif request.method == 'POST':
-#         form = ArticleForm(data=request.POST)
-#         if form.is_valid():
-#             article = Article.objects.create(
-#                 title=form.cleaned_data['title'],
-#                 author=form.cleaned_data['author'],
-#                 text=form.cleaned_data['text']
-#             )
-#             return redirect('article_view', pk=article.pk)
-#         else:
-#             return render(request, 'create.html', context={'form': form})
+def guest_create_view(request, *args, **kwargs):
+    if request.method == 'GET':
+        form = GuestForm()
+        return render(request, 'create.html', context={'form': form})
+    elif request.method == 'POST':
+        form = GuestForm(data=request.POST)
+        if form.is_valid():
+            Guest = Guest.objects.create(
+                title=form.cleaned_data['title'],
+                author=form.cleaned_data['author'],
+                text=form.cleaned_data['text']
+            )
+            return redirect('guest_view')
+        else:
+            return render(request, 'create.html', context={'form': form})
 #
 #
 # def article_update_view(request, pk):
