@@ -22,6 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', guest_view, name='guest'),
     path('guests', guest_view, name='guest_view'),
-    path('guest', guest_create_view, name='guest_create_view'
-
+    path('guest', guest_create_view, name='guest_add')
 ]

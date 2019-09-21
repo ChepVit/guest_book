@@ -17,8 +17,8 @@ def guest_create_view(request, *args, **kwargs):
     elif request.method == 'POST':
         form = GuestForm(data=request.POST)
         if form.is_valid():
-            Guest = Guest.objects.create(
-                title=form.cleaned_data['title'],
+            guest = Guest.objects.create(
+                email=form.cleaned_data['email'],
                 author=form.cleaned_data['author'],
                 text=form.cleaned_data['text']
             )
