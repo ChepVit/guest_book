@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from webapp.views import guest_view, guest_create_view
+from webapp.views import guest, guest_create, guest_update
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', guest_view, name='guest'),
-    path('guests', guest_view, name='guest_view'),
-    path('guest', guest_create_view, name='guest_add')
+    path('', guest, name='guest'),
+    path('guests', guest, name='guest'),
+    path('guest', guest_create, name='guest_add'),
+    path('guest/<int:pk>', guest_update, name='guest_update')
 ]

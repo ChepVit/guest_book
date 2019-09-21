@@ -4,13 +4,13 @@ from webapp.forms import GuestForm
 from webapp.models import Guest
 
 
-def guest_view(request, *args, **kwargs):
+def guest(request, *args, **kwargs):
     guests = Guest.objects.all()
     return render(request, 'index.html', context={
         'guests': guests
     })
 
-def guest_create_view(request, *args, **kwargs):
+def guest_create(request, *args, **kwargs):
     if request.method == 'GET':
         form = GuestForm()
         return render(request, 'create.html', context={'form': form})
@@ -22,44 +22,86 @@ def guest_create_view(request, *args, **kwargs):
                 author=form.cleaned_data['author'],
                 text=form.cleaned_data['text']
             )
-            return redirect('guest_view')
+            return redirect('guest')
         else:
             return render(request, 'create.html', context={'form': form})
+
+def guest_update(request, pk):
+
+    guest = get_object_or_404(Guest, pk=pk)
+
+    if request.method == 'GET':
+
+        form = GuestForm(data={
+
+            'email': guest.email,
+
+            'text': guest.text,
+
+            'author': guest.author
+
+        })
+
+        return render(request, 'update.html', context={'form': form, 'guest': guest})
+
+    elif request.method == 'POST':
+
+        form = GuestForm(data=request.POST)
+
+        if form.is_valid():
+
+            guest.email = form.cleaned_data['email']
+
+            guest.text = form.cleaned_data['text']
+
+            guest.author = form.cleaned_data['author']
+
+            guest.save()
+
+            return redirect('guest')
+
+        else:
+
+            return render(request, 'update.html', context={'form': form, 'guest': guest})
 #
 #
-# def article_update_view(request, pk):
-#     article = get_object_or_404(Article, pk=pk)
+# def guest_update(request, pk):
+#     guest = get_object_or_404(Guest, pk=pk)
 #     if request.method == 'GET':
-#         return render(request, 'update.html', context={'article': article})
+#         form = GuestForm()
+#         return render(request, 'update.html', context={'guest': guest, 'form': form})
 #     elif request.method == 'POST':
-#         article.title = request.POST.get('title')
-#         article.author = request.POST.get('author')
-#         article.text = request.POST.get('text')
+#         guest.email = request.POST.get('email')
+#         guest.author = request.POST.get('author')
+#         guest.text = request.POST.get('text')
 #
 #         errors = {}
-#         if not article.title:
-#             errors['title'] = 'Title should not be empty!'
-#         elif len(article.title) > 200:
-#             errors['title'] = 'Title should be 200 symbols or less!'
+#         if not guest.email:
+#             errors['email'] = 'Title should not be empty!'
+#         elif len(guest.email) > 200:
+#             errors['email'] = 'Title should be 200 symbols or less!'
 #
-#         if not article.author:
+#         if not guest.author:
 #             errors['author'] = 'Author should not be empty!'
-#         elif len(article.author) > 40:
+#         elif len(guest.author) > 40:
 #             errors['author'] = 'Author should be 40 symbols or less!'
 #
-#         if not article.text:
+#         if not guest.text:
 #             errors['text'] = 'Text should not be empty!'
-#         elif len(article.text) > 3000:
+#         elif len(guest.text) > 3000:
 #             errors['text'] = 'Text should be 3000 symbols or less!'
 #
 #         if len(errors) > 0:
 #             return render(request, 'update.html', context={
 #                 'errors': errors,
-#                 'article': article
+#                 'guest': guest
 #             })
 #
-#         article.save()
-#         return redirect('article_view', pk=article.pk)
+#         guest.save()
+#         return redirect('guest' )
+
+
+
 #
 #
 # def article_delete_view(request, pk):

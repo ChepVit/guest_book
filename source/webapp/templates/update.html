@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Redaction{% endblock %}
+
+{% block content %}
+    <h1>Update Guest</h1>
+    <form method="POST" action="{% url 'guest_update' guest.pk %}">
+        {% include 'partial/update_form.html' with button_text="Save" %}
+    </form>
+{% endblock %}

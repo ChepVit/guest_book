@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
-{% block menu %}
-    <li><a href="{% url 'guest_add' %}">Add New</a></li>
-{% endblock %}
+
 
 {% block content %}
     <h1>Гостевая книга</h1>
     <hr/>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'guest_add' %}">Add New</a></button>
+
     {% for guest in guests %}
-        <div class="card" style="width: 30rem;">
+        <div class="card" style="width: 30rem; padding: 2rem;">
             <div class="card-body">
+                 <a href="{% url 'guest_update' guest.pk %}">Redaction</a>
     <h5 class="card-title">{{ guest.author }} ({{ guest.email }}</h5>
     <p class="card-text">{{ guest.text }}</p>
   </div>
