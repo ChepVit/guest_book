@@ -9,7 +9,9 @@
     {% for guest in guests %}
         <div class="card" style="width: 30rem; padding: 2rem;">
             <div class="card-body">
+
                  <a href="{% url 'guest_update' guest.pk %}">Redaction</a>
+                 <a href="{% url 'guest_delete' guest.pk %}">Delete</a>
     <h5 class="card-title">{{ guest.author }} ({{ guest.email }}</h5>
     <p class="card-text">{{ guest.text }}</p>
   </div>
